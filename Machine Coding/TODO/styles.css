@@ -1,0 +1,46 @@
+.contianer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid black;
+  position: relative;
+}
+
+.input > input {
+  border: 0;
+  padding: 10px;
+  width: calc(100% - 40px);
+}
+
+.input > input:focus-visible {
+  outline: none;
+}
+
+.crossicon {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 15px;
+}
+
+button {
+  margin: 20px 0;
+}
+
+.todoList {
+  padding: 0;
+  list-style: none;
+}
+
+.todoList input {
+  width: calc(100% - 20px);
+}
+
+.todoList .crossicon {
+  right: -20px;
+}
