@@ -21,11 +21,16 @@
   outline: none;
 }
 
+.todoList > li {
+  margin-bottom: 20px;
+}
+
 .crossicon {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
   right: 15px;
+  cursor: pointer;
 }
 
 button {
@@ -42,5 +47,5 @@ button {
 }
 
 .todoList .crossicon {
-  right: -20px;
+  right: -50px;
 }

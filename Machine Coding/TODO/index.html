@@ -15,11 +15,16 @@
           placeholder="Enter TODO here"
           class=""
         />
-        <span class="crossicon">X</span>
+        <span class="crossicon" onclick="emptyToDoInput()">X</span>
       </div>
       <button type="button" onclick="addTodo()">Add Todo</button>
 
-      <ul id="todoListContainer" class="todoList"></ul>
+      <ul
+        id="todoListContainer"
+        class="todoList"
+        onclick="handleClick(event)"
+        ondblclick="makeInputEditable(event)"
+      ></ul>
     </div>
   </body>
   <script src="./Todo.js"></script>

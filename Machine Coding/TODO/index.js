@@ -1,6 +1,11 @@
 const todo = new Todo();
 const todoInput = document.querySelector('#getTodoInput');
 const todoListContainer = document.querySelector('#todoListContainer');
+const key = 'todoStorage';
+
+const updateLocalStorage = () => {
+  localStorage.setItem(key, JSON.stringify(todo.getTodos()));
+};
 
 const emptyNode = (parent) => {
   while (parent.firstChild) {
@@ -10,6 +15,10 @@ const emptyNode = (parent) => {
   // the empty node will take parent as an argument and check if there is
   // a child if it is the it will remove and the loop will run till all the
   // children are removed.
+};
+
+const emptyToDoInput = () => {
+  todoInput.value = '';
 };
 
 const renderList = () => {
@@ -24,6 +33,9 @@ const renderList = () => {
     DIV.classList.add('input');
     INPUT.type = 'text';
     INPUT.value = todo.value;
+    INPUT.setAttribute('disabled', '');
+    INPUT.setAttribute('id', `input${todo.id}`);
+    INPUT.setAttribute('onKeyUp', 'onInputEdit(event)');
     SPAN.classList.add('crossicon');
     SPAN.innerText = 'X';
     SPAN.setAttribute('id', todo.id);
@@ -33,6 +45,7 @@ const renderList = () => {
     LI.appendChild(DIV);
     todoListContainer.appendChild(LI);
   });
+  updateLocalStorage();
 };
 
 function addTodo() {
@@ -42,5 +55,40 @@ function addTodo() {
     return;
   }
   todo.addTodo(inputValue);
+  emptyToDoInput();
   renderList();
 }
+
+function handleClick(e) {
+  if (e && e.target && e.target.id && e.target.nodeName === 'SPAN') {
+    todo.deleteTodo(e.target.id);
+    renderList();
+  }
+  // console.log(e);
+}
+
+function makeInputEditable(e) {
+  const id = e.target.id;
+  if (!id) return;
+  const inputBox = document.querySelector('#' + id);
+  inputBox.removeAttribute('disabled');
+}
+
+function onInputEdit(e) {
+  if (e.key != 'Enter') return;
+  const id = e.target.id.slice(5);
+  if (!id) return;
+  const value = e.target.value;
+  todo.updateTodo(id, value);
+  renderList();
+
+  // console.log(e);
+}
+
+(() => {
+  const localTodos = localStorage.getItem(key);
+  if (localTodos) {
+    todo.setTodos(JSON.parse(localTodos));
+    renderList();
+  }
+})();

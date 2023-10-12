@@ -3,13 +3,14 @@ class Todo {
     this.todos = [];
   }
   addTodo(value) {
-    this.todos.push({ id: parseInt(Math.random() * 1000), value });
+    this.todos.push({ id: parseInt(Math.random() * 1000).toString(), value });
   }
   deleteTodo(id) {
     this.todos = this.todos.filter((todo) => todo.id !== id);
   }
+
   updateTodo(idToUpdate, valueToUpdate) {
-    this.todos = this.todo.map((todo) => {
+    this.todos = this.todos.map((todo) => {
       if (todo.id === idToUpdate)
         return { id: idToUpdate, value: valueToUpdate };
       return todo;
@@ -25,6 +26,10 @@ class Todo {
 
   getTodos() {
     return this.todos;
+  }
+
+  setTodos(todos) {
+    this.todos = todos;
   }
 }
 
