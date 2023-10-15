@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Component } from 'react';
+import Counter from './components/Counter1';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default class App extends Component {
+  componentDidMount() {
+    console.log('component did mounted');
+  }
 
-  return (
-    <>
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+  }
+  componentWillUnmount() {
+    console.log('Component unmounted');
+  }
+
+  increements() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+        {/* <h1>{this.state.count}</h1> */}
+        {/*  now we will like maintain the folder str we will 
+        code we will pass props */}
 
-export default App
+        <Counter number={this.state.count}></Counter>
+        {/* <button
+          onClick={() => {
+            this.increements();
+          }}
+        >
+          click me
+        </button> */}
+      </div>
+    );
+  }
+}
