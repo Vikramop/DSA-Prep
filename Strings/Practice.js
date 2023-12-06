@@ -1,16 +1,12 @@
-function Practice(array) {
-  if (array.length === 0) return 0;
-  let i = 0;
-
-  const arr = [];
-  for (let j = 1; j < array.lenth; j++) {
-    if (array[i] !== array[j]) {
-      i++;
-      array[i] = array[j];
-      arr.push(i);
+function Zero(array) {
+  for (let number of array) {
+    for (let i = 1; i < array.length; i++) {
+      if (number + array[i] == 0) {
+        return [number, array[i]];
+      }
     }
   }
-  console.log(arr);
 }
 
-Practice([1, 2, 2, 2, 3, 3, 4, 5, 6, 6]);
+const result = Zero([-5, -4, -3, -2, 0, 2, 4, 6, 8]);
+console.log(result);
