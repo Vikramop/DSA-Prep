@@ -1,9 +1,15 @@
 function Zero(array) {
-  for (let number of array) {
-    for (let i = 1; i < array.length; i++) {
-      if (number + array[i] == 0) {
-        return [number, array[i]];
-      }
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left < right) {
+    sum = array[left] + array[right];
+    if (sum === 0) {
+      return [array[left], array[right]];
+    } else if (sum < 0) {
+      left++;
+    } else {
+      right--;
     }
   }
 }
