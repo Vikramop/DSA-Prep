@@ -20,15 +20,17 @@ function checkSquareOptimized(array1, array2) {
   // console.log(map1);
 
   for (let items of array2) {
-    map2[items] = (map2[items] || 0) + 1; //{ '1': 1, '4': 2, '25': 1 }
+    map2[items] = (map2[items] || 0) + 1; //{ '1': 1, '4': 2, '16': 1 }
   }
   // console.log(map2);
 
   for (let key in map1) {
     if (!map2[key * key]) {
+      //this checks if it has square .
       return false;
     }
     if (map1[key] !== map2[key * key]) {
+      // it compares the keys of both the array.
       return false;
     }
   }
