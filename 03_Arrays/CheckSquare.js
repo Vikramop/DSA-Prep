@@ -14,6 +14,7 @@ function CheckSquare(arr1, arr2) {
       if (arr1[i] * arr1[i] === arr2[j]) {
         isSquare = true;
       }
+      // this condition checks wheather the square exist in sec array or not. otherwise it will always gives true.
       if (j === arr2.length - 1) {
         if (!isSquare) {
           return false;
@@ -26,3 +27,5 @@ function CheckSquare(arr1, arr2) {
 
 const result = CheckSquare([1, 2, 3, 4], [1, 16, 9, 4]);
 console.log(result);
+
+// It has Time Complexity of O(n^2) cuz nested for is used.
