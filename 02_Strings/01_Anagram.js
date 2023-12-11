@@ -26,7 +26,7 @@
 
 function isAnagram(string1, string2) {
   if (string1.length !== string2.length) {
-    return true;
+    return false;
   }
   let counter = {}; //this is the map thing.
   for (let letter of string1) {
